@@ -9,7 +9,7 @@ public class GothardGoteni{
 
 
     private static boolean mergeComplete=false;
-    private static List<Integer> noMatchCache= new ArrayList<>(); //needed to keep track of scenario that was already matched as INVALID
+    private static Set<Integer> noMatchCache= new HashSet<>(); //needed to keep track of scenario that was already matched as INVALID
                                                                 //improve performance
 
 
@@ -57,6 +57,7 @@ public class GothardGoteni{
         }
 
         mergeComplete=false; // we re-init mergeComplete to allow more reassemble
+        noMatchCache.clear();
         return ret;
     }
 
@@ -181,11 +182,14 @@ public class GothardGoteni{
      */
     private static MatchedFragment  doMatchAndMerge(String element1, String element2){
 
-        for(int e : noMatchCache){ // check we dont have known unmatched scenario
+        Iterator<Integer> iter =noMatchCache.iterator();
+        while(iter.hasNext()){  // check we dont have known unmatched scenario
+            int e =iter.next();
             if ( e==(element1+element2).hashCode()) { //compare with Hashcode
                 return null; // This scenario was already matched, so we dont proceed
             };
         }
+
 
         // Initialise the variable
         MatchedFragment matchedFragment=null; // needed to store the Matched Fragment details
