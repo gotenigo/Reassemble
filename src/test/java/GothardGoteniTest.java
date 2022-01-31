@@ -32,16 +32,16 @@ public class GothardGoteniTest {
         String ret;
 
         ret= GothardGoteni.reassemble("ABCDEF;DEFG");
-        assertEquals(ret.toString(),"ABCDEFG");
+        assertEquals("ABCDEFG",ret);
 
         ret= GothardGoteni.reassemble("ABCDEF;XCDEZ");
-        assertEquals(ret.toString(),"ABCDEFXCDEZ");
+        assertEquals("ABCDEFXCDEZ",ret);
 
         ret= GothardGoteni.reassemble("ABCDEF;XYZABC");
-        assertEquals(ret.toString(),"XYZABCDEF");
+        assertEquals("XYZABCDEF",ret);
 
         ret= GothardGoteni.reassemble("ABCDEF;BCDE");
-        assertEquals(ret.toString(),"ABCDEF");
+        assertEquals("ABCDEF",ret);
 
 
     }

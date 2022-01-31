@@ -84,7 +84,6 @@ public class GothardGoteni{
      */
     private  static Set<String> mergeFragment(Set<String> inputSet){
 
-        List<MatchedFragment> listMatchedFragment= new ArrayList<>(); // O(1) - constant time, really fast, doesn’t depend on the size of the collection
         Set<String> outPutData = new LinkedHashSet<>();   // keep Order and no Duplicate. Also very fast :: LinkedHashSet add-O(1) contains-O(1)  next-O(1)
         Set<String> inputData = new LinkedHashSet<>(inputSet); // keep Order and no Duplicate. Also very fast :: LinkedHashSet add-O(1) contains-O(1)  next-O(1)
         inputData.removeAll(Collections.singleton(""));   // we are not interested into empty String. So we remove them
@@ -93,10 +92,11 @@ public class GothardGoteni{
         boolean isMergeFound=false;
         String firstFragment=""; // Fragment element 1
         String secondFragment=""; // Fragment element 2
-        MatchedFragment matchedFragment=null; // Merged Fragment. it should be a merged element from Fragment element 1 +  2
-
+        MatchedFragment matchedFragment = null; // Merged Fragment. it should be a merged element from Fragment element 1 +  2
+        MatchedFragment vMatchedFragment=null; // used as internal variable to compare
 
         Iterator<String> firstFragmentIterator = inputData.iterator();  //Iterator and for-each loop are faster than simple for loop for collections with no random access
+
 
         //1st Iteration
         while (firstFragmentIterator.hasNext() && !isMergeFound ){ // We iterate over  a first Fragment Element until we find something
@@ -115,20 +115,17 @@ public class GothardGoteni{
                     break; // We are not interested to compute when both Iterators are pointing to the same value/element
                 }
 
-                matchedFragment=doMatchAndMerge(firstFragment,secondFragment);  // we try to merge in forward direction
+                vMatchedFragment=doMatchAndMerge(firstFragment,secondFragment);  // we try to merge in forward direction
 
-                if(matchedFragment!=null){   // We have a Merge !
-
-                    listMatchedFragment.add(matchedFragment); // we store the MergeFragment for output
+                if(vMatchedFragment!=null){   // We have a Merge !
+                    matchedFragment=getMaxOverlapMatchedFragment(matchedFragment,vMatchedFragment); // keep the Fragment with the Best Overlap
                     isMergeFound=true;
-
                 }else{  //  We have not found a Merge yet
 
-                    matchedFragment=doMatchAndMerge(secondFragment,firstFragment);  // we re-try to Merge in backward direction
+                    vMatchedFragment=doMatchAndMerge(secondFragment,firstFragment);  // we re-try to Merge in backward direction
 
-                    if(matchedFragment!=null){ // We have a Merge !
-
-                        listMatchedFragment.add(matchedFragment); // we store the MergeFragment for output
+                    if(vMatchedFragment!=null){ // We have a Merge !
+                        matchedFragment=getMaxOverlapMatchedFragment(matchedFragment,vMatchedFragment); // keep the Fragment with the Best Overlap
                         isMergeFound=true;
                     }
 
@@ -137,9 +134,6 @@ public class GothardGoteni{
         }
 
         if(isMergeFound) {
-
-            matchedFragment=listMatchedFragment.stream() // Compute you the maximally overlapping pair matched Fragment
-                    .max(Comparator.comparing(MatchedFragment::getOverlapLength)).get();
 
             inputData.remove(matchedFragment.getElement1()); // we remove element that was used for the Merge
             inputData.remove(matchedFragment.getElement2());  // we remove element that was used for the Merge
@@ -160,8 +154,36 @@ public class GothardGoteni{
     }
 
 
+    /*******
+     *
+     *
+     *  getMaxOverlapMatchedFragment     *
+     *
+     * @author  Gothard GOTENI
+     * @version 1.0
+     * @since   2022-01-31
+     *
+     * @param frag1 MatchedFragment
+     * @param frag2 MatchedFragment
+     * @return MatchedFragment
+     */
+    private static MatchedFragment getMaxOverlapMatchedFragment(MatchedFragment frag1, MatchedFragment frag2){
 
+        if (frag1==null) {
+            return frag2;
+        }else if (frag2==null){
+            return frag1;
+        }
 
+        if(frag1.getOverlapLength() > frag2.getOverlapLength()){  // return the best Frag overlap
+            return frag1;
+        }else if (frag1.getOverlapLength() < frag2.getOverlapLength()){ // return the best Frag overlap
+            return frag2;
+        }else {
+            return frag1;
+        }
+
+    }
 
 
 
@@ -224,7 +246,6 @@ public class GothardGoteni{
 
             index--; // reduce the index and keep looking if we have not found anything
         }
-
 
         return matchedFragment;
     }
