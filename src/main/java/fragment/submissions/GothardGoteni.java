@@ -51,7 +51,7 @@ public class GothardGoteni{
 
         Set<String> ret=inputSet;
         while(!mergeComplete) {     // as long as the merge is not completed, we keep asking for mergeFragment (keep Fragmenting)
-            ret = mergeFragment(ret);
+            ret = mergeFragment(ret); // go and try to merge Fragment
         }
 
         mergeComplete=false; // we re-init mergeComplete to allow more reassemble
