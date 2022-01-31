@@ -9,6 +9,7 @@ public class GothardGoteni{
 
 
     private static boolean mergeComplete=false;
+    private static List<Integer> noMatchCache= new ArrayList<>();
 
 
 
@@ -164,7 +165,7 @@ public class GothardGoteni{
 
     /**
      *
-     *  mdoMatchAndMerge
+     *  doMatchAndMerge
      *
      *
      * @author  Gothard GOTENI
@@ -179,6 +180,11 @@ public class GothardGoteni{
      */
     private static MatchedFragment  doMatchAndMerge(String element1, String element2){
 
+        for(int e : noMatchCache){
+            if ( e==(element1+element2).hashCode()) {
+                return null;
+            };
+        }
 
         // Initialise the variable
         MatchedFragment matchedFragment=null; // needed to store the Matched Fragment details
@@ -221,10 +227,16 @@ public class GothardGoteni{
             index--; // reduce the index and keep looking if we have not found anything
         }
 
+        if(isMergeFound==false) {
+            noMatchCache.add(  (element1+element2).hashCode()  );
+        }
+
+
         return matchedFragment;
     }
 
 } // End of the class
+
 
 
 

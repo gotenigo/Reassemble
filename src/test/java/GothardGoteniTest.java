@@ -60,7 +60,6 @@ public class GothardGoteniTest {
         assertEquals(ret.toString(),"[O draconian devil! Oh lame saint!]");
 
 
-
     }
 
 
