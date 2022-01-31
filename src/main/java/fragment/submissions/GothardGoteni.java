@@ -2,6 +2,7 @@ package fragment.submissions;
 
 import java.io.*;
 import java.util.*;
+import java.util.stream.Collectors;
 
 
 //Solution Class : GothardGoteni
@@ -9,8 +10,7 @@ public class GothardGoteni{
 
 
     private static boolean mergeComplete=false;
-    private static Set<Integer> noMatchCache= new HashSet<>(); //needed to keep track of scenario that was already matched as INVALID
-                                                                //improve performance
+
 
 
 
@@ -40,12 +40,10 @@ public class GothardGoteni{
      * @param input String
      * @return Set<String>
      */
-    public static Set<String>  reassemble(String input){
-
-
+    public static String  reassemble(String input){
 
         if (input==null) { // Null input is returned as an Empty list
-            return Collections.EMPTY_SET;
+            return "";
         }
 
 
@@ -57,8 +55,12 @@ public class GothardGoteni{
         }
 
         mergeComplete=false; // we re-init mergeComplete to allow more reassemble
-        noMatchCache.clear();
-        return ret;
+
+        String value= ret.stream()    // convert set to String
+                .collect(Collectors.joining(""));   // the No solution case will be concatenated as well as empty
+
+        return value;
+
     }
 
 
@@ -137,7 +139,7 @@ public class GothardGoteni{
         if(isMergeFound) {
 
             matchedFragment=listMatchedFragment.stream() // Compute you the maximally overlapping pair matched Fragment
-                            .max(Comparator.comparing(MatchedFragment::getOverlapLength)).get();
+                    .max(Comparator.comparing(MatchedFragment::getOverlapLength)).get();
 
             inputData.remove(matchedFragment.getElement1()); // we remove element that was used for the Merge
             inputData.remove(matchedFragment.getElement2());  // we remove element that was used for the Merge
@@ -182,14 +184,6 @@ public class GothardGoteni{
      */
     private static MatchedFragment  doMatchAndMerge(String element1, String element2){
 
-        Iterator<Integer> iter =noMatchCache.iterator();
-        while(iter.hasNext()){  // check we dont have known unmatched scenario
-            int e =iter.next();
-            if ( e==(element1+element2).hashCode()) { //compare with Hashcode
-                return null; // This scenario was already matched, so we dont proceed
-            };
-        }
-
 
         // Initialise the variable
         MatchedFragment matchedFragment=null; // needed to store the Matched Fragment details
@@ -205,7 +199,6 @@ public class GothardGoteni{
 
 
         while(!isMergeFound) {
-
 
             overlap =overlap.substring(0,index);
 
@@ -230,10 +223,6 @@ public class GothardGoteni{
             }
 
             index--; // reduce the index and keep looking if we have not found anything
-        }
-
-        if(isMergeFound==false) {
-            noMatchCache.add(  (element1+element2).hashCode()  );
         }
 
 
@@ -290,5 +279,3 @@ class MatchedFragment{
     }
 
 }
-
-
