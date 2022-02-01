@@ -93,7 +93,6 @@ public class GothardGoteni{
         String firstFragment=""; // Fragment element 1
         String secondFragment=""; // Fragment element 2
         MatchedFragment matchedFragment = null; // Merged Fragment. it should be a merged element from Fragment element 1 +  2
-        MatchedFragment vMatchedFragment=null; // used as internal variable to compare
 
         Iterator<String> firstFragmentIterator = inputData.iterator();  //Iterator and for-each loop are faster than simple for loop for collections with no random access
 
@@ -115,7 +114,7 @@ public class GothardGoteni{
                     break; // We are not interested to compute when both Iterators are pointing to the same value/element
                 }
 
-                vMatchedFragment=doMatchAndMerge(firstFragment,secondFragment,true);  // we try to merge in forward and backward direction
+                MatchedFragment vMatchedFragment=doMatchAndMerge(firstFragment,secondFragment,true);  // we try to merge in forward and backward direction
 
                 if(vMatchedFragment!=null){   // We have a Merge !
                     matchedFragment=getMaxOverlapMatchedFragment(matchedFragment,vMatchedFragment); // keep the Fragment with the Best Overlap
