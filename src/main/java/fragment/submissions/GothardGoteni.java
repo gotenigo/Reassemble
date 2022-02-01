@@ -42,7 +42,7 @@ public class GothardGoteni{
      */
     public static String  reassemble(String input){
 
-        if (input==null) { // Null input is returned as an Empty list
+        if (input==null || input.isEmpty()) { // Null input is returned as an Empty list
             return "";
         }
 
@@ -115,21 +115,13 @@ public class GothardGoteni{
                     break; // We are not interested to compute when both Iterators are pointing to the same value/element
                 }
 
-                vMatchedFragment=doMatchAndMerge(firstFragment,secondFragment);  // we try to merge in forward direction
+                vMatchedFragment=doMatchAndMerge(firstFragment,secondFragment,true);  // we try to merge in forward direction
 
                 if(vMatchedFragment!=null){   // We have a Merge !
                     matchedFragment=getMaxOverlapMatchedFragment(matchedFragment,vMatchedFragment); // keep the Fragment with the Best Overlap
                     isMergeFound=true;
-                }else{  //  We have not found a Merge yet
-
-                    vMatchedFragment=doMatchAndMerge(secondFragment,firstFragment);  // we re-try to Merge in backward direction
-
-                    if(vMatchedFragment!=null){ // We have a Merge !
-                        matchedFragment=getMaxOverlapMatchedFragment(matchedFragment,vMatchedFragment); // keep the Fragment with the Best Overlap
-                        isMergeFound=true;
-                    }
-
                 }
+
             }
         }
 
@@ -204,8 +196,7 @@ public class GothardGoteni{
      * @param element2 String
      * @return MatchedFragment
      */
-    private static MatchedFragment  doMatchAndMerge(String element1, String element2){
-
+    private static MatchedFragment  doMatchAndMerge(String element1, String element2, boolean checkBothDirection){
 
         // Initialise the variable
         MatchedFragment matchedFragment=null; // needed to store the Matched Fragment details
@@ -246,6 +237,11 @@ public class GothardGoteni{
 
             index--; // reduce the index and keep looking if we have not found anything
         }
+
+        if (matchedFragment==null && checkBothDirection) {
+            matchedFragment=doMatchAndMerge(element2,  element1, false);
+        }
+
 
         return matchedFragment;
     }
