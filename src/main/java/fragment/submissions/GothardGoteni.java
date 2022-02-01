@@ -223,16 +223,14 @@ public class GothardGoteni{
             int ret = element1.indexOf(overlap); // is the overlap an indexOf element1 (do we have an overlap at this index) ?
 
             if(ret!=-1 && element1.endsWith(overlap) && !overlap.equals(element1)) { // Merge require an indexOF (overlap) + overlap needs to be at the end of the String
-                isMergeFound = true;
+
+                //isMergeFound = true;
+                String mergedData = element1.substring(0,ret)+element2; // Merge data : element1 + element2 at the right index (computed from indexOf)
+                matchedFragment = new MatchedFragment(element1,element2,mergedData,overlap.length() ); // Same the details of the Merged Fragment
+                break;
+
             }else{
                 isMergeFound = false;
-            }
-
-            if (isMergeFound) { // for readability, we can leave this code here
-
-                String mergedData = element1.substring(0,ret)+element2; // Merge data : element1 + element2 at the right index (computed from indexOf)
-                matchedFragment = new MatchedFragment(element1,element2,mergedData,overlap.length() );
-                break;
             }
 
             index--; // reduce the index and keep looking if we have not found anything
