@@ -121,9 +121,8 @@ public class GothardGoteni{
                     matchedFragment=getMaxOverlapMatchedFragment(matchedFragment,vMatchedFragment); // keep the Fragment with the Best Overlap
                     isMergeFound=true;
                 }
-
-
             }
+
         }
 
         if(isMergeFound) {
