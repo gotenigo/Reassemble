@@ -90,17 +90,14 @@ public class GothardGoteni{
 
         // Define required variable
         boolean isMergeFound=false;
-        String firstFragment=""; // Fragment element 1
-        String secondFragment=""; // Fragment element 2
         MatchedFragment matchedFragment = null; // Merged Fragment. it should be a merged element from Fragment element 1 +  2
 
         Iterator<String> firstFragmentIterator = inputData.iterator();  //Iterator and for-each loop are faster than simple for loop for collections with no random access
 
-
         //1st Iteration
         while (firstFragmentIterator.hasNext() && !isMergeFound ){ // We iterate over  a first Fragment Element until we find something
 
-            firstFragment=firstFragmentIterator.next();
+            String firstFragment=firstFragmentIterator.next();
 
             Iterator<String> secondFragmentIterator = inputData.iterator(); //Iterator and for-each loop are faster than simple for loop for collections with no random access
             secondFragmentIterator.next(); // the second element should point to another element but the 1st element
@@ -108,7 +105,7 @@ public class GothardGoteni{
             // 2nd Iteration
             while (secondFragmentIterator.hasNext() ){ // We iterate over  a second Fragment Element until we find something that could be matched with the first Fragment Element
 
-                secondFragment= secondFragmentIterator.next();// the second element should point to another element but the 1st element
+                String secondFragment= secondFragmentIterator.next();// the second element should point to another element but the 1st element
 
                 if(secondFragment.equals(firstFragment)){
                     break; // We are not interested to compute when both Iterators are pointing to the same value/element
