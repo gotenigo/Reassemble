@@ -115,12 +115,13 @@ public class GothardGoteni{
                     break; // We are not interested to compute when both Iterators are pointing to the same value/element
                 }
 
-                vMatchedFragment=doMatchAndMerge(firstFragment,secondFragment,true);  // we try to merge in forward direction
+                vMatchedFragment=doMatchAndMerge(firstFragment,secondFragment,true);  // we try to merge in forward and backward direction
 
                 if(vMatchedFragment!=null){   // We have a Merge !
                     matchedFragment=getMaxOverlapMatchedFragment(matchedFragment,vMatchedFragment); // keep the Fragment with the Best Overlap
                     isMergeFound=true;
                 }
+
 
             }
         }
@@ -239,7 +240,7 @@ public class GothardGoteni{
         }
 
         if (matchedFragment==null && checkBothDirection) {
-            matchedFragment=doMatchAndMerge(element2,  element1, false);
+            matchedFragment=doMatchAndMerge(element2,  element1, false); // we change the order to check the order direction
         }
 
 
