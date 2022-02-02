@@ -38,7 +38,7 @@ public class GothardGoteni{
      *
      *
      * @param input String
-     * @return Set<String> or empty String
+     * @return String or empty String
      */
     public static String  reassemble(String input){
 
