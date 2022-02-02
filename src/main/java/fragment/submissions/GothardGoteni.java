@@ -212,7 +212,7 @@ public class GothardGoteni{
 
             overlap =overlap.substring(0,index);
 
-            if(overlap.isEmpty() || overlap.trim().length()==1 ) { // empty overlap or 1 overlap length is out of scope
+            if(overlap.isEmpty() /*|| overlap.trim().length()==1*/ ) { // empty overlap or 1 overlap length is out of scope
                 break;
             }
 
