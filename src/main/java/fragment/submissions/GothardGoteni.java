@@ -219,7 +219,7 @@ public class GothardGoteni{
             //log.info("[...LOOKING FOR (substr-ed at index 0,"+index+") val ]"+overlap +"[ IN ]"+element1);
             int ret = element1.indexOf(overlap); // is the overlap an indexOf element1 (do we have an overlap at this index) ?
 
-            if(ret!=-1 && element1.endsWith(overlap) && !overlap.equals(element1)) { // Merge require an indexOF (overlap) + overlap needs to be at the end of the String
+            if(ret!=-1 && element1.endsWith(overlap) ) { // Merge require an indexOF (overlap) + overlap needs to be at the end of the String
 
                 //isMergeFound = true;
                 String mergedData = element1.substring(0,ret)+element2; // Merge data : element1 + element2 at the right index (computed from indexOf)
