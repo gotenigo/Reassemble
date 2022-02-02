@@ -38,7 +38,7 @@ public class GothardGoteni{
      *
      *
      * @param input String
-     * @return Set<String>
+     * @return Set<String> or empty String
      */
     public static String  reassemble(String input){
 
@@ -80,7 +80,7 @@ public class GothardGoteni{
      *
      *
      * @param inputSet Set<String>
-     * @return Set<String>
+     * @return Set<String> or empty Set
      */
     private  static Set<String> mergeFragment(Set<String> inputSet){
 
@@ -153,7 +153,7 @@ public class GothardGoteni{
      *
      * @param frag1 MatchedFragment
      * @param frag2 MatchedFragment
-     * @return MatchedFragment
+     * @return MatchedFragment or null
      */
     private static MatchedFragment getMaxOverlapMatchedFragment(MatchedFragment frag1, MatchedFragment frag2){
 
@@ -190,7 +190,8 @@ public class GothardGoteni{
      *
      * @param element1 String
      * @param element2 String
-     * @return MatchedFragment
+     * @param checkBothDirection boolean
+     * @return MatchedFragment or null
      */
     private static MatchedFragment  doMatchAndMerge(String element1, String element2, boolean checkBothDirection){
 
