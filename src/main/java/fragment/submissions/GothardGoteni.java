@@ -250,6 +250,19 @@ public class GothardGoteni{
 
 
 // Class to store all Matched Element
+
+/**
+ *
+ * A Class to store Fragment details with matching and Merge information
+ *   + overlap Length
+ *   + merged Fragment
+ *   + Fragment 1 + Fragment used for the match & merge
+ *
+ * Author:
+ * Gothard GOTENI
+ * Type parameters:
+ * <E> – String element1, String element2, String mergeElement, int overlapLength
+ */
 class MatchedFragment{
 
     private final String element1;
