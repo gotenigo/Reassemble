@@ -13,7 +13,6 @@ public class GothardGoteni{
 
 
 
-
     public static void main(String[] args) throws IOException {
 
         try (BufferedReader in = new BufferedReader(new FileReader(args[0]))) {
@@ -118,7 +117,6 @@ public class GothardGoteni{
                     isMergeFound=true;
                 }
             }
-
         }
 
         if(isMergeFound) {
@@ -234,7 +232,9 @@ public class GothardGoteni{
         }
 
         if (matchedFragment==null && checkBothDirection) {
-            matchedFragment=doMatchAndMerge(element2,  element1, false); // we change the order to check the order direction
+
+            MatchedFragment vMatchedFragment=doMatchAndMerge(element2,  element1, false); // we change the order to check the order direction
+            matchedFragment=getMaxOverlapMatchedFragment(matchedFragment,vMatchedFragment); // keep the Fragment with the Best Overlap
         }
 
 
