@@ -41,7 +41,7 @@ public class GothardGoteni{
      */
     public static String  reassemble(String input){
 
-        if (input==null || input.isEmpty()) { // Null input is returned as an Empty list
+        if (input==null || input.isEmpty()) { // Null or empty input is returned as an Empty String
             return "";
         }
 
