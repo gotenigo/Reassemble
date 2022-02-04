@@ -85,7 +85,7 @@ public class GothardGoteni{
 
         Set<String> outPutData = new LinkedHashSet<>();   // keep Order and no Duplicate. Also very fast :: LinkedHashSet add-O(1) contains-O(1)  next-O(1)
         Set<String> inputData = new LinkedHashSet<>(inputSet); // keep Order and no Duplicate. Also very fast :: LinkedHashSet add-O(1) contains-O(1)  next-O(1)
-        inputData.removeAll(Collections.singleton(""));   // we are not interested into empty String. So we remove them
+        //inputData.removeAll(Collections.singleton(""));   // we are not interested into empty String. So we remove them
 
         // Define required variable
         boolean isMergeFound=false;
@@ -236,7 +236,6 @@ public class GothardGoteni{
             MatchedFragment vMatchedFragment=doMatchAndMerge(element2,  element1, false); // we change the order to check the order direction
             matchedFragment=getMaxOverlapMatchedFragment(matchedFragment,vMatchedFragment); // keep the Fragment with the Best Overlap
         }
-
 
         return matchedFragment;
     }
