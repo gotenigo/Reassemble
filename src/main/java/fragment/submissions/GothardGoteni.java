@@ -166,7 +166,7 @@ public class GothardGoteni{
         }else if (frag1.getOverlapLength() < frag2.getOverlapLength()){ // return the best Frag overlap
             return frag2;
         }else {
-            return frag1;
+            return frag1; // == scenario (same fragment). So we can return either frag1 or fra2. it does not matter
         }
 
     }
