@@ -126,7 +126,7 @@ public class GothardGoteni{
             mergeComplete=true;   // if we have not found any match, then merge is completed
         }
 
-        outPutData.addAll(inputData);
+        outPutData.addAll(inputData); // Anything that has not  matched & merged yet needs to be returned for further processing
         if(outPutData.size()==1){   // if the Output size is 1, then merge is completed
             mergeComplete=true;
         }
