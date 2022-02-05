@@ -21,6 +21,12 @@ public class GothardGoteniTest {
 
     }
 
+    @Test
+    public void stringtest(){
+
+        System.out.println("012345".substring(0,1));
+    }
+
 
 
 

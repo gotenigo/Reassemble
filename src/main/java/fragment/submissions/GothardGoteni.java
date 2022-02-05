@@ -41,7 +41,7 @@ public class GothardGoteni{
      */
     public static String  reassemble(String input){
 
-        if (input==null || input.isEmpty()) { // Null or empty input is returned as an Empty String
+        if (input==null || input.isEmpty()) { // Null or empty input is returned as an Empty String .
             return "";
         }
 
@@ -203,20 +203,16 @@ public class GothardGoteni{
         }
 
 
-        while(!isMergeFound) {
+        while(!isMergeFound && index!=0) { // While we have not found anything and the overlap's index >0
 
             overlap =overlap.substring(0,index);
-
-            if(overlap.isEmpty() /*|| overlap.trim().length()==1*/ ) { // empty overlap or 1 overlap length is out of scope
-                break;
-            }
 
             //log.info("[...LOOKING FOR (substr-ed at index 0,"+index+") val ]"+overlap +"[ IN ]"+element1);
             int ret = element1.indexOf(overlap); // is the overlap an indexOf element1 (do we have an overlap at this index) ?
 
             if(ret!=-1 && element1.endsWith(overlap) ) { // Merge require an indexOF (overlap) + overlap needs to be at the end of the String
 
-                //isMergeFound = true;
+                isMergeFound = true;
                 String mergedData = element1.substring(0,ret)+element2; // Merge data : element1 + element2 at the right index (computed from indexOf)
                 matchedFragment = new MatchedFragment(element1,element2,mergedData,overlap.length() ); // Same the details of the Merged Fragment
                 break;
@@ -228,7 +224,7 @@ public class GothardGoteni{
             index--; // reduce the index and keep looking if we have not found anything
         }
 
-        if (matchedFragment==null && checkBothDirection) {
+        if (isMergeFound && checkBothDirection) {
 
             MatchedFragment vMatchedFragment=doMatchAndMerge(element2,  element1, false); // we change the order to check the order direction
             matchedFragment=getMaxOverlapMatchedFragment(matchedFragment,vMatchedFragment); // keep the Fragment with the Best Overlap
