@@ -198,7 +198,7 @@ public class GothardGoteni{
         String overlap=element2; // arbitrary : start the overlap as element2. value will be then completed and calculated as we iterate
 
         if(element1.contains(element2)){  // if we have Full overlap, then we have a Merge
-            matchedFragment = new MatchedFragment(element1,element2,element1,element2.length() );
+            matchedFragment = new MatchedFragment(element1,element2,element1,element2.length() ); // in this case, the Merged element is element1
             return matchedFragment;  // we return the matched Fragment with overlap score
         }
 
@@ -212,19 +212,17 @@ public class GothardGoteni{
 
             if(ret!=-1 && element1.endsWith(overlap) ) { // Merge require an indexOF (overlap) + overlap needs to be at the end of the String
 
-                isMergeFound = true;
+                isMergeFound = true; // keep just for consistency
                 String mergedData = element1.substring(0,ret)+element2; // Merge data : element1 + element2 at the right index (computed from indexOf)
                 matchedFragment = new MatchedFragment(element1,element2,mergedData,overlap.length() ); // Same the details of the Merged Fragment
                 break;
 
-            }else{
-                isMergeFound = false;
             }
-
             index--; // reduce the index and keep looking if we have not found anything
         }
 
-        if (isMergeFound && checkBothDirection) {
+
+        if (checkBothDirection) {
 
             MatchedFragment vMatchedFragment=doMatchAndMerge(element2,  element1, false); // we change the order to check the order direction
             matchedFragment=getMaxOverlapMatchedFragment(matchedFragment,vMatchedFragment); // keep the Fragment with the Best Overlap
