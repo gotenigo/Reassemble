@@ -85,7 +85,7 @@ public class GothardGoteni{
 
         Set<String> outPutData = new LinkedHashSet<>();   // keep Order and no Duplicate. Also very fast :: LinkedHashSet add-O(1) contains-O(1)  next-O(1)
         Set<String> inputData = new LinkedHashSet<>(inputSet); // keep Order and no Duplicate. Also very fast :: LinkedHashSet add-O(1) contains-O(1)  next-O(1)
-        inputData.removeAll(Collections.singleton(""));   // we are not interested into empty String. So we remove them. Just for extra security
+        inputData.removeAll(Collections.singleton(""));   //  Just for extra security - we are not interested into empty String. So we remove them.
 
         // Define required variable
         boolean isMergeFound=false;
