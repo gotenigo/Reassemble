@@ -24,7 +24,14 @@ public class GothardGoteniTest {
     @Test
     public void stringtest(){
 
-        System.out.println("012345".substring(0,1));
+        System.out.println("________________ stringtest");
+
+        String ret;
+
+
+        ret= GothardGoteni.reassemble("abccd;ccddcc;ccee");
+        assertEquals("abccddccee",ret);
+
     }
 
 

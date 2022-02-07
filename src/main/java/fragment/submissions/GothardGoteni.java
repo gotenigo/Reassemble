@@ -208,7 +208,7 @@ public class GothardGoteni{
             overlap =overlap.substring(0,index);
 
             //log.info("[...LOOKING FOR (substr-ed at index 0,"+index+") val ]"+overlap +"[ IN ]"+element1);
-            int ret = element1.indexOf(overlap); // is the overlap an indexOf element1 (do we have an overlap at this index) ?
+            int ret = element1.lastIndexOf(overlap); // is the overlap an indexOf element1 (do we have an overlap at this index) ?
 
             if(ret!=-1 && element1.endsWith(overlap) ) { // Merge require an indexOF (overlap) + overlap needs to be at the end of the String
 
@@ -223,7 +223,6 @@ public class GothardGoteni{
 
 
         if (checkBothDirection) {
-
             MatchedFragment vMatchedFragment=doMatchAndMerge(element2,  element1, false); // we change the order to check the order direction
             matchedFragment=getMaxOverlapMatchedFragment(matchedFragment,vMatchedFragment); // keep the Fragment with the Best Overlap
         }
