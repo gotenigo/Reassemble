@@ -207,7 +207,7 @@ public class GothardGoteni{
 
             overlap =overlap.substring(0,index);
 
-            //log.info("[...LOOKING FOR (substr-ed at index 0,"+index+") val ]"+overlap +"[ IN ]"+element1);
+            System.out.println("=>...Is substring(0,"+index+") =["+overlap +"] lastIndexOf  ["+element1+"]");
             int ret = element1.lastIndexOf(overlap); // is the overlap an indexOf element1 (do we have an overlap at this index) ?
 
             if(ret!=-1 && element1.endsWith(overlap) ) { // Merge require an indexOF (overlap) + overlap needs to be at the end of the String
