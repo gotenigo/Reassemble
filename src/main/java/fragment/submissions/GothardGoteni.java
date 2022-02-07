@@ -216,7 +216,6 @@ public class GothardGoteni{
                 String mergedData = element1.substring(0,ret)+element2; // Merge data : element1 + element2 at the right index (computed from indexOf)
                 matchedFragment = new MatchedFragment(element1,element2,mergedData,overlap.length() ); // Same the details of the Merged Fragment
                 break;
-
             }
             index--; // reduce the index and keep looking if we have not found anything
         }
