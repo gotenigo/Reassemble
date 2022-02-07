@@ -283,7 +283,7 @@ class MatchedFragment{
 
     @Override
     public String toString() {
-        return "MatchedData{" +
+        return "MatchedFragment{" +
                 "element1='" + element1 + '\'' +
                 ", element2='" + element2 + '\'' +
                 ", mergeElement='" + mergeElement + '\'' +
