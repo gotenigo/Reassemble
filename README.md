@@ -1,11 +1,11 @@
 # Reassemble
 
 #Challenge: Reassemble Text Fragments
-Background
-Imagine you have 5 copies of the same page of text. You value this text and have no hard or soft copies of it. Your two year old nephew visits and, while you are not looking, rips each page up into fragments and gleefully plays in the “snow” he has just created.
+<br>Background
+<br>Imagine you have 5 copies of the same page of text. You value this text and have no hard or soft copies of it. Your two year old nephew visits and, while you are not looking, rips each page up into fragments and gleefully plays in the “snow” he has just created.
 You need at least one copy of that page of text back ASAP. As punishment to your niece, who should have been supervising your nephew at the time of the incident, you set her the painstaking task of keying in all the paper text fragments to a text file on your shiny MacBook Pro. Now the task is yours. Can you reassemble a soft copy of the original document?
-The Challenge
-Write a program to reassemble a given set of text fragments into their original sequence. For this challenge your program should have a main method accepting one argument – the path to a well-formed UTF-8 encoded text file. Each line in the file represents a test case of the main functionality of your program: read it, process it and println to the console the corresponding defragmented output.
+<br>The Challenge
+<br>Write a program to reassemble a given set of text fragments into their original sequence. For this challenge your program should have a main method accepting one argument – the path to a well-formed UTF-8 encoded text file. Each line in the file represents a test case of the main functionality of your program: read it, process it and println to the console the corresponding defragmented output.
 Each line contains text fragments separated by a semicolon, ‘;’. You can assume that every fragment has length at least 2.
 
 <br>Example input 1:
@@ -21,7 +21,7 @@ Example output 2:
 Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.
 
 
-You may also assume:
+<br>You may also assume:
 
 1.	Your niece’s attention to detail is impeccable; she has not misread any fragments or made any typos.
 2.	All test cases / input lines will reduce to one unambiguous, final, reassembled document.
