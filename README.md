@@ -1,6 +1,7 @@
 # Reassemble
 
-#Challenge: Reassemble Text Fragments
+#Challenge: Reassemble Text Fragments#
+
 <br>Background
 <br>Imagine you have 5 copies of the same page of text. You value this text and have no hard or soft copies of it. Your two year old nephew visits and, while you are not looking, rips each page up into fragments and gleefully plays in the “snow” he has just created.
 You need at least one copy of that page of text back ASAP. As punishment to your niece, who should have been supervising your nephew at the time of the incident, you set her the painstaking task of keying in all the paper text fragments to a text file on your shiny MacBook Pro. Now the task is yours. Can you reassemble a soft copy of the original document?
